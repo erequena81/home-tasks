@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hogar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login-screen" class="screen active">
+  <div class="login-bg">
+    <div class="login-card">
+      <div class="home-icon">🏡</div>
+      <h1 class="login-title">Hogar</h1>
+      <p class="login-subtitle">¿Quién eres?</p>
+      <div class="user-buttons">
+        <button class="user-btn u1" id="btn-u1"><span class="user-avatar" id="avatar-u1">👤</span><span id="label-u1">Usuario 1</span></button>
+        <button class="user-btn u2" id="btn-u2"><span class="user-avatar" id="avatar-u2">👤</span><span id="label-u2">Usuario 2</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="screen">
+  <header class="header">
+    <div class="header-left">
+      <span class="header-home">🏡</span>
+      <div><h1 class="header-title">Hogar</h1><p class="header-date" id="header-date"></p></div>
+    </div>
+    <div class="header-right">
+      <div class="current-user" id="current-user-display"></div>
+      <button class="logout-btn" id="btn-logout">Salir</button>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" id="nav-today">📋 Hoy</button>
+    <button class="nav-btn" id="nav-stats">📊 Stats</button>
+    <button class="nav-btn" id="nav-manage">⚙️ Gestionar</button>
+    <button class="nav-btn" id="nav-config">👤 Config</button>
+  </nav>
+
+  <!-- HOY -->
+  <section id="section-today" class="content-section active">
+    <div class="today-summary" id="today-summary"></div>
+    <div id="categories-container"></div>
+    <button class="fab" id="btn-fab">+</button>
+  </section>
+
+  <!-- STATS -->
+  <section id="section-stats" class="content-section">
+    <div class="stats-container" id="stats-container"></div>
+  </section>
+
+  <!-- GESTIONAR -->
+  <section id="section-manage" class="content-section">
+    <div class="gestionar-container">
+      <h2 class="section-title">Gestionar Tareas</h2>
+      <div id="manage-list"></div>
+    </div>
+  </section>
+
+  <!-- CONFIG -->
+  <section id="section-config" class="content-section">
+    <div class="config-container">
+      <h2 class="section-title">Configuración</h2>
+      <div class="config-card">
+        <h3>Usuarios</h3>
+        <div class="config-row">
+          <label>Usuario 1</label>
+          <input type="text" id="cfg-name-u1" class="form-input" placeholder="Nombre...">
+          <input type="text" id="cfg-avatar-u1" class="form-input avatar-input" placeholder="👤" maxlength="2">
+        </div>
+        <div class="config-row">
+          <label>Usuario 2</label>
+          <input type="text" id="cfg-name-u2" class="form-input" placeholder="Nombre...">
+          <input type="text" id="cfg-avatar-u2" class="form-input avatar-input" placeholder="👤" maxlength="2">
+        </div>
+        <button class="add-btn" id="btn-save-config">Guardar</button>
+      </div>
+      <div class="config-card">
+        <h3>Categorías</h3>
+        <div id="cfg-categories"></div>
+        <div class="form-row" style="margin-top:12px">
+          <input type="text" id="cfg-new-cat" class="form-input" placeholder="Nueva categoría...">
+          <button class="add-btn" id="btn-add-cat">Añadir</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- MODAL nueva tarea -->
+<div id="modal" class="modal-overlay" style="display:none">
+  <div class="modal-card">
+    <h3 class="modal-title">Nueva Tarea</h3>
+    <input type="text" id="modal-name" class="form-input" placeholder="Nombre de la tarea...">
+    <select id="modal-cat" class="form-select"></select>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <label style="font-size:0.85rem;color:#78716C;white-space:nowrap">Veces al día</label>
+      <input type="number" id="modal-times" class="form-input" value="1" min="1" max="10" style="width:70px;text-align:center;">
+    </div>
+    <select id="modal-freq" class="form-select">
+      <option value="daily">Diaria</option>
+      <option value="every2days">Cada 2 días</option>
+      <option value="weekly">Semanal</option>
+      <option value="asneeded">Según necesidad</option>
+      <option value="once">Puntual (solo hoy)</option>
+    </select>
+    <div class="modal-buttons">
+      <button class="add-btn" id="modal-save">Añadir</button>
+      <button class="logout-btn" id="modal-cancel">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

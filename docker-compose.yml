@@ -1,0 +1,12 @@
+services:
+  hogar-v2:
+    build: .
+    container_name: hogar-v2
+    ports:
+      - "8081:3000"
+    volumes:
+      - hogar-v2-data:/data
+    restart: unless-stopped
+
+volumes:
+  hogar-v2-data:
